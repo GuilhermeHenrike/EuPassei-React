@@ -15,6 +15,11 @@ export const fazerLogin = (dadosUsuario) => {
     return api.post(`/login`, dadosUsuario)
 }
 
+        // LOGOUT
+export const fazerLogout = () => {
+    return api.post(`/logout`)
+}
+
         // PROVAS
 
 export const criarProva = (caixaId, dadosProva) => {
@@ -39,13 +44,8 @@ export const editarCaixa = (caixaId, dadosCaixa) => {
     return api.put(`/caixaProvas/${caixaId}`, dadosCaixa)
 }
 
-// ADICIONE ESTA FUNÇÃO AQUI PARA TRAZER TODAS:
 export const listarTodasCaixas = () => {
     return api.get(`/caixaProvas`)
-}
-
-export const mostrarCaixa = (caixaId) => {
-    return api.get(`/caixaProvas/${caixaId}`)
 }
 
 export const deletarCaixa = (caixaId) => {

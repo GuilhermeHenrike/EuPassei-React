@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { deletarCaixa } from '../../api'
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from '@mui/material';
 
 function ApagarCaixaProvasModal({ isOpen, onClose, caixaId }) {
     const [mensagem, setMensagem] = useState('')
@@ -21,21 +22,23 @@ function ApagarCaixaProvasModal({ isOpen, onClose, caixaId }) {
         }
     }
 
-    if (!isOpen) {
-        return null
-    }
-
     return (
         <>
         
-        <div>
-            <h1>Apagar caixa:</h1>
-            <div>
-                <button onClick={lidarApagarCaixa}>Apagar</button>
-                <button onClick={onClose}>Cancelar</button>
-            </div>
-            {mensagem && (<p>{mensagem}</p>)}
-        </div>
+        <Dialog open={isOpen} onClose={onClose} fullWidth maxWidth='xs'>
+            <DialogTitle>Apagar caixa</DialogTitle>
+            <DialogContent>
+                {mensagem ? (
+                    <Typography>{mensagem}</Typography>
+                ) : (
+                    <Typography>Tem certeza que deseja apagar esta prova?</Typography>
+                )}
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={onClose}>Cancelar</Button>
+                <Button onClick={lidarApagarCaixa} color="error" variant="contained">Apagar</Button>
+            </DialogActions>
+        </Dialog>
         
         </>
     )

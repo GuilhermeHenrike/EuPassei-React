@@ -1,5 +1,14 @@
 import { useState } from 'react'
 import { fazerRegistro } from '../../api'
+import { 
+  Box, 
+  TextField, 
+  Button, 
+  Typography, 
+  Container, 
+  Paper, 
+  Alert 
+} from '@mui/material';
 
 function Registro({ onRegisterSucesso }) {
     const [username, setUsername] = useState('')
@@ -38,15 +47,20 @@ function Registro({ onRegisterSucesso }) {
 
     return (
         <>
-        <div>
-            <h1>Registrar</h1>
-            <form onSubmit={LidarCadastro}>
-                <input type='text' value={username} placeholder="Digite seu nome" onChange={(e) => setUsername(e.target.value)}/>
-                <input type='password' value={password} placeholder="Digite sua senha" onChange={(e) => setPassword(e.target.value)}/>
-                <button type='submit'>Enviar</button>
-            </form>
-            {mensagem && <p>{mensagem}</p>}
-        </div>
+
+        <Container maxWidth="xs">
+            <Paper elevation={3} sx={{ p: 4, mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography component="h1" variant="h5">Registrar</Typography>
+
+                <Box component="form" onSubmit={LidarCadastro} sx={{ mt: 1, width: '100%' }}>
+                    <TextField margin="normal" required fullWidth label="Usuário" value={username} placeholder="Digite seu nome" onChange={(e) => setUsername(e.target.value)}/>
+                    <TextField margin="normal" required fullWidth label="Senha" type="password" value={password} placeholder="Digite sua senha" onChange={(e) => setPassword(e.target.value)}/>
+
+                    <Button type="submit" fullWidth variant="contained">Cadastrar</Button>
+                </Box>
+                {mensagem && <p>{mensagem}</p>}
+            </Paper>
+        </Container>
 
         </>
     )

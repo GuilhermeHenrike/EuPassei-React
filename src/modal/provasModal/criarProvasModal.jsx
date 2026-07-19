@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { criarProva } from '../../api'
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, TextField } from '@mui/material';
 
-function CriarProvasModal({isOpen, onClose, caixaId, tipoProva = "NORMAL", podeAdicionar}) {
+function CriarProvasModal({isOpen, onClose, caixaId, tipoProva = "NORMAL", podeAdicionar = true}) {
     const [titulo, setTitulo] = useState('')
     const [nota, setNota] = useState('')
     const [mensagem, setMensagem] = useState('')
@@ -34,26 +35,25 @@ function CriarProvasModal({isOpen, onClose, caixaId, tipoProva = "NORMAL", podeA
         }
     }
 
-    if (!isOpen) {
-        return null
-    }
-
     return (
         <>
         
-        <div>
-            <h1>CRIAR PROVA</h1>
-            <form onSubmit={enviarFormulario}>
-                <input type='text' value={titulo} placeholder='Titulo da prova' onChange={(e) => setTitulo(e.target.value)} />
-                <input type='number' value={nota} placeholder='Nota da prova' onChange={(e) => setNota(parseFloat(e.target.value))} />
-                <button type='submit' disabled={!podeAdicionar}>Enviar</button>
-                <button type='button' onClick={onClose}>Cancelar</button>
-                {/* se coloca tipo BOTAO pq se n o formulario acha que ele é tipo submit e da aviso no terminal */}
-            </form>
-            {mensagem && (<p> {mensagem} </p>)} 
-        </div>
-
+        <Dialog open={isOpen} onClose={onClose} fullWidth maxWidth="xs">
+            <DialogTitle>CRIAR PROVA</DialogTitle>
+            <DialogContent>
+                {mensagem && (<Typography>{mensagem}</Typography>)}
+                <form id='proBotao' onSubmit={enviarFormulario}>
+                    <TextField margin="normal" fullWidth label="Titulo" value={titulo} type="text" placeholder='Titulo da prova' onChange={(e) => setTitulo(e.target.value)} />
+                    <TextField margin="normal" fullWidth label="Nota" value={nota} type="number" placeholder='Nota da prova' onChange={(e) => setNota(parseFloat(e.target.value))} />
+                </form>
+            </DialogContent>
+            <DialogActions>
+                <Button type='button' onClick={onClose}>Cancelar</Button>
+                <Button type='submit' form='proBotao' disabled={!podeAdicionar}>Enviar</Button>
+            </DialogActions>
+        </Dialog>
         </>
+
     )
 }
 

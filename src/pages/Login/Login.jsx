@@ -1,5 +1,14 @@
 import { useState } from 'react'
 import { fazerLogin } from '../../api'
+import { 
+  Box, 
+  TextField, 
+  Button, 
+  Typography, 
+  Container, 
+  Paper, 
+  Alert 
+} from '@mui/material';
 
 function Login({ onLoginSucesso }) {
     // o { onLoginSucesso} serve pra enviar dados ()
@@ -28,23 +37,28 @@ function Login({ onLoginSucesso }) {
             }, 2000)
             // 2 segundos pra mandar o onLoginSucesso pra mudar a tela
             
-        } catch (erro) {
-            const mensagemErro = erro.response?.data || 'Erro: não foi possivel conectar na API'
+        } catch (error) {
+            const mensagemErro = error.response?.data || 'Erro: não foi possivel conectar na API'
             setMensagem(`Erro: ${mensagemErro}`)
         }
     }
 
     return (
         <>
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={lidarLogin}>
-                <input type='text' value={username} placeholder='Digite seu nome' onChange={(e) => setUsername(e.target.value)}/>
-                <input type='password' value={password} placeholder='Digite sua senha' onChange={(e) => setPassword(e.target.value)}/>
-                <button type='submit'>Enviar</button>
-            </form>
-            {mensagem && (<p>{mensagem}</p>)}
-        </div>
+        <Container maxWidth="xs">
+            <Paper elevation={3} sx={{ p: 4, mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography component="h1" variant="h5">Login</Typography>
+                
+                <Box component="form" onSubmit={lidarLogin} sx={{ mt: 1, width: '100%' }}>
+                    <TextField margin="normal" required fullWidth label="Usuário" value={username} placeholder="Digite seu nome" onChange={(e) => setUsername(e.target.value)}/>
+                    <TextField margin="normal" required fullWidth label="Senha" type="password" value={password} placeholder="Digite sua senha" onChange={(e) => setPassword(e.target.value)}/>
+
+                    <Button type="submit" fullWidth variant="contained"> Entrar </Button>
+                </Box>
+
+                {mensagem && (<p>{mensagem}</p>)}
+            </Paper>
+        </Container>
         </>
     )
 }

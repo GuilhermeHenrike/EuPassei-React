@@ -1,49 +1,54 @@
 import { useState } from 'react'
-import { deletarProva } from '../../api'
+import { fazerLogout } from '../../api'
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from '@mui/material';
 
-function ApagarProvasModal({ isOpen, onClose, caixaId, provaId }) {
+                                            // onLogoutSucesso nasce aqui como mensageiro
+function FazerLogoutModal({ isOpen, onClose, onLogoutSucesso }) {
     const [mensagem, setMensagem] = useState('')
 
-    const lidarApagarProva = async () => {
+    const lidarLogout = async () => {
 
         try {
-            const resposta = await deletarProva(caixaId, provaId)
+            const resposta = await fazerLogout()
 
             setMensagem(`Sucesso: ${resposta.data}`)
 
             setTimeout(() => {
                 onClose()
                 setMensagem('')
-            }, 2000)
 
+                if (onLogoutSucesso) {
+                    onLogoutSucesso();
+                }
+
+            }, 2000)
         } catch (erro) {
             const mensagemErro = erro.response?.data || 'Erro: não foi possivel conectar na API'
             setMensagem(`Erro: ${mensagemErro}`)
         }
-    }
+    } 
 
     return (
         <>
         
         <Dialog open={isOpen} onClose={onClose} fullWidth maxWidth="xs">
-            <DialogTitle>Apagar prova</DialogTitle>
+            <DialogTitle>Fazer logout</DialogTitle>
             <DialogContent>
                 {mensagem ? (
                     <Typography>{mensagem}</Typography>
                 ) : (
-                    <Typography>Tem certeza que deseja apagar esta prova?</Typography>
+                    <Typography>Tem certeza que deseja sair?</Typography>
                 )}
             </DialogContent>
             <DialogActions>
-                {/* O Button do MUI já vem com um visual de mercado */}
                 <Button onClick={onClose} color="primary">Cancelar</Button>
-                <Button onClick={lidarApagarProva} color="error" variant="contained">Apagar</Button>
+                <Button onClick={lidarLogout} color="error" variant="contained">Sair</Button>
             </DialogActions>
         </Dialog>
         
         </>
     )
+
 }
 
-export default ApagarProvasModal
+export default FazerLogoutModal
