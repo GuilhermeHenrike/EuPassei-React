@@ -108,7 +108,7 @@ function Home({ onLogout }) {
                                         </Typography>
                                         {caixa.pontosNecessarios > 0 && (
                                             <Typography variant="body2" color="secondary" sx={{ mt: 1 }}>
-                                                Nota necessária na Final: <strong>{caixa.pontosNecessarios.toFixed(2)}</strong>
+                                                Nota necessária para passar na média: <strong>{caixa.pontosNecessarios.toFixed(2)}</strong>. Certifique-se de tirar uma nota maior que a nota mínima para passar na final!
                                             </Typography>
                                         )}
                                     </Box>
