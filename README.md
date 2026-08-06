@@ -1,16 +1,45 @@
-# React + Vite
+# EuPassei
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Sobre o Projeto
+O **EuPassei** é uma aplicação web desenvolvida para auxiliar estudantes a gerenciarem suas notas, organizarem caixas de provas (Matérias) e calcularem médias acadêmicas de forma prática e intuitiva.
+O sistema resolve o problema do acompanhamento escolar/universitário disperso, centralizando o controle de notas parciais, recuperação e provas finais em um único ambiente seguro.
 
-Currently, two official plugins are available:
+### 🛠️ Tecnologias Principais
+* **Back-end:** Java 17, Spring Boot, Spring Data JPA, Spring Security (BCrypt), Hibernate, Bean Validation, Banco de Dados Relacional (MySQL)
+* **Front-end:** React (Vite), Axios, Material UI (MUI)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🗂️ Estrutura do Repositório
+O projeto está dividido em duas partes:
+* [Back-end (API)](https://github.com/GuilhermeHenrike/euPassei)
+* [Front-end (Interface)](https://github.com/GuilhermeHenrike/euPassei---react)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## ⚙️ Como Executar o Projeto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Pré-requisitos
+* [Java Development Kit (JDK 17 ou superior)](https://www.oracle.com/java/technologies/downloads/)
+* [Maven](https://maven.apache.org/) (ou utilize o wrapper embutido `mvnw`)
+* [Node.js](https://nodejs.org/) (versão 18+ recomendada)
+* [Git](https://git-scm.com/)
+
+---
+
+### Rodando o Front-end
+
+Clone o repositório, acesse a pasta, instale as dependências e inicie o ambiente de desenvolvimento:
+
+```bash
+# Clone o repositório do front-end
+git clone <url-do-repo-do-front>
+
+# Entre na pasta do projeto
+cd <pasta-do-front>
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
