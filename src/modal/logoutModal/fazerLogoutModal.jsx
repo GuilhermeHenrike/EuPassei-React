@@ -11,7 +11,7 @@ function FazerLogoutModal({ isOpen, onClose, onLogoutSucesso }) {
         try {
             const resposta = await fazerLogout()
 
-            setMensagem(`Sucesso: ${resposta.data}`)
+            setMensagem(`${resposta.data}`)
 
             setTimeout(() => {
                 onClose()
@@ -23,8 +23,8 @@ function FazerLogoutModal({ isOpen, onClose, onLogoutSucesso }) {
 
             }, 2000)
         } catch (erro) {
-            const mensagemErro = erro.response?.data || 'Erro: não foi possivel conectar na API'
-            setMensagem(`Erro: ${mensagemErro}`)
+            const mensagemErro = erro.response?.data || 'Não foi possivel conectar na API'
+            setMensagem(`${mensagemErro}`)
         }
     } 
 

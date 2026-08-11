@@ -32,7 +32,7 @@ function EditarProvasModal({ isOpen, onClose, caixaId, provaId, tipoProva, prova
         try {
             const resposta = await editarProvas(caixaId, dadosProva)
 
-            setMensagem(`Sucesso: ${resposta.data}`)
+            setMensagem(`${resposta.data}`)
 
             setTitulo('')
             setNota('')
@@ -43,8 +43,8 @@ function EditarProvasModal({ isOpen, onClose, caixaId, provaId, tipoProva, prova
             }, 2000)
 
         } catch (erro) {
-            const mensagemErro = erro.response?.data || 'Erro: não foi possivel conectar na API'
-            setMensagem(`Erro: ${mensagemErro}`)
+            const mensagemErro = erro.response?.data || 'Não foi possivel conectar na API'
+            setMensagem(`${mensagemErro}`)
         }
     }
 

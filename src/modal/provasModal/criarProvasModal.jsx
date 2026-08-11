@@ -19,7 +19,7 @@ function CriarProvasModal({isOpen, onClose, caixaId, tipoProva = "NORMAL", podeA
         try {
             const resposta = await criarProva(caixaId, dadosProva)
 
-            setMensagem(resposta.data)
+            setMensagem(`${resposta.data}`)
 
             setTitulo('')
             setNota('')
@@ -30,8 +30,8 @@ function CriarProvasModal({isOpen, onClose, caixaId, tipoProva = "NORMAL", podeA
             }, 2000)
             
         } catch (erro) {
-            const mensagemErro = erro.response?.data || 'Erro: não foi possivel conectar na API'
-            setMensagem(`Erro: ${mensagemErro}`)
+            const mensagemErro = erro.response?.data || 'Não foi possivel conectar na API'
+            setMensagem(`${mensagemErro}`)
         }
     }
 

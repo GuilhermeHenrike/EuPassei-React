@@ -10,15 +10,15 @@ function ApagarCaixaProvasModal({ isOpen, onClose, caixaId }) {
         try {
             const resposta = await deletarCaixa(caixaId)
 
-            setMensagem(`Sucesso: ${resposta.data}`)
+            setMensagem(`${resposta.data}`)
 
             setTimeout(() => {
                 onClose()
                 setMensagem('')
             }, 2000)
         } catch (erro) {
-            const mensagemErro = erro.response?.data || 'Erro: não foi possivel conectar na API'
-            setMensagem(`Erro: ${mensagemErro}`)
+            const mensagemErro = erro.response?.data || 'Não foi possivel conectar na API'
+            setMensagem(`${mensagemErro}`)
         }
     }
 

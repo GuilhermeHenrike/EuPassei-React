@@ -38,7 +38,7 @@ function CriarCaixaProvasModal({isOpen, onClose}) {
             const resposta = await criarCaixa(dadosCaixa)
             // é uma variavel que tambem cria a caixa de provas
 
-            setMensagem(`Sucesso: ${resposta.data}`)
+            setMensagem(`${resposta.data}`)
 
             // limpando
             setTitulo('')
@@ -56,8 +56,8 @@ function CriarCaixaProvasModal({isOpen, onClose}) {
             // 2 segundos pra fechar o modal, só pra ler a mensagem
 
         } catch (erro) {
-            const mensagemErro = erro.response?.data || 'Erro: não foi possivel conectar na API'
-            setMensagem(`Erro: ${mensagemErro}`)
+            const mensagemErro = erro.response?.data || 'Não foi possivel conectar na API'
+            setMensagem(`${mensagemErro}`)
         }
     }
 

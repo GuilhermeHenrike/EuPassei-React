@@ -10,7 +10,7 @@ function ApagarProvasModal({ isOpen, onClose, caixaId, provaId }) {
         try {
             const resposta = await deletarProva(caixaId, provaId)
 
-            setMensagem(`Sucesso: ${resposta.data}`)
+            setMensagem(`${resposta.data}`)
 
             setTimeout(() => {
                 onClose()
@@ -18,8 +18,8 @@ function ApagarProvasModal({ isOpen, onClose, caixaId, provaId }) {
             }, 2000)
 
         } catch (erro) {
-            const mensagemErro = erro.response?.data || 'Erro: não foi possivel conectar na API'
-            setMensagem(`Erro: ${mensagemErro}`)
+            const mensagemErro = erro.response?.data || 'Não foi possivel conectar na API'
+            setMensagem(`${mensagemErro}`)
         }
     }
 
